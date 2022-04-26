@@ -49,6 +49,7 @@ const Grid = (props) => {
   useEffect(() => {
     if (!gridIsPopulated) return;
     setGrid(populateInitialCells(grid, props.size, numberOfCells));
+    setGridIsPopulated(false);
   }, [gridIsPopulated]);
 
   useEffect(() => {
@@ -102,9 +103,6 @@ const Grid = (props) => {
   const restartGameHandle = () => {
     setGrid(() => createGrid(props.size));
     setGridIsPopulated(true);
-
-    setShouldSpawnCell(true);
-
     setScore(0);
     setGameOver(false);
   };

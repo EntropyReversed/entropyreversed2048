@@ -5,11 +5,13 @@ body {
   position: relative;
   min-height: 100vh;
   margin: 0;
+  overscroll-behavior: none;
+  font-family: monospace;
 }
 
 .grid-wrap {
   --border-r: 6px;
-  --transition-dur: 0.4s;
+  --transition-dur: 0.3s;
   position: sticky;
   top: 0;
   min-height: calc(var(--vh) * 100);
@@ -57,7 +59,6 @@ body {
   width: var(--cellSize);
   height: var(--cellSize);
   color: var(--color);
-  font-family: monospace;
   font-weight: bold;
   font-size: calc(var(--cellSize) / 3);
   animation: slide var(--transition-dur) ease-in-out forwards;
@@ -111,11 +112,11 @@ body {
   top: 20px;
   right: 20px;
   background: #ccc0b3;
-  font-family: monospace;
   font-size: 17px;
   padding: 15px 20px;
   border-radius: var(--border-r);
   margin: 0;
+  user-select: none;
 }
 
 .title {
@@ -146,7 +147,6 @@ body {
 
   h2 {
     color: black;
-    font-family: monospace;
     margin-top: auto;
     margin-bottom: 0;
     font-size: 60px;
@@ -155,7 +155,6 @@ body {
   h4 {
     margin-bottom: 40px;
     margin-top: 40px;
-    font-family: monospace;
     font-size: 30px;
   }
 
@@ -168,7 +167,6 @@ body {
     text-transform: uppercase;
     padding: 15px 20px;
     border-radius: 6px;
-    font-family: monospace;
     font-weight: bold;
     color: white;
     font-size: 20px;
