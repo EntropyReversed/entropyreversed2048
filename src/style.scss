@@ -1,0 +1,217 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  min-height: 100vh;
+  margin: 0;
+}
+
+.grid-wrap {
+  --border-r: 6px;
+  --transition-dur: 0.4s;
+  position: sticky;
+  top: 0;
+  min-height: calc(var(--vh) * 100);
+  overflow-y: auto;
+}
+
+.grid {
+  position: relative;
+  width: calc(var(--gridDim) * (var(--cellSize) + var(--gap)));
+  height: calc(var(--gridDim) * (var(--cellSize) + var(--gap)));
+  border-radius: var(--border-r);
+  padding: calc(var(--gap) * 0.5);
+  background-color: #bbada0;
+  user-select: none;
+
+  &-wrap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  &:before {
+    position: absolute;
+    content: '';
+    top: var(--gap);
+    left: var(--gap);
+    width: var(--cellSize);
+    height: var(--cellSize);
+    background-color: #ccc0b3;
+    box-shadow: var(--bgcPattern);
+    border-radius: var(--border-r);
+  }
+}
+
+.cell {
+  position: absolute;
+  top: var(--gap);
+  left: var(--gap);
+  width: var(--cellSize);
+  height: var(--cellSize);
+  color: var(--color);
+  font-family: monospace;
+  font-weight: bold;
+  font-size: calc(var(--cellSize) / 3);
+  animation: slide var(--transition-dur) ease-in-out forwards;
+
+  &__inner {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    border-radius: var(--border-r);
+    background-color: var(--backgroudColor);
+  }
+
+  &.pop {
+    --scalePop: 1.15;
+    transform: translate(
+      calc(var(--lastXpos) * (var(--cellSize) + var(--gap))),
+      calc(var(--lastYpos) * (var(--cellSize) + var(--gap)))
+    );
+
+    .cell__inner {
+      transform: scale(0);
+      animation: pop calc(var(--transition-dur) * 2) ease-in-out forwards
+        calc(var(--transition-dur) * 0.8);
+    }
+  }
+
+  &.ghost {
+    z-index: 3;
+    .cell__inner {
+      animation: vanish var(--transition-dur) ease-in-out forwards
+        calc(var(--transition-dur) * 0.5);
+    }
+  }
+
+  &.merged {
+    --scalePop: 1.18;
+    .cell__inner {
+      transform: scale(0);
+      animation: pop calc(var(--transition-dur) * 2) ease-in-out forwards
+        calc(var(--transition-dur) * 0.5);
+    }
+  }
+}
+
+.score,
+.title {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: #ccc0b3;
+  font-family: monospace;
+  font-size: 17px;
+  padding: 15px 20px;
+  border-radius: var(--border-r);
+  margin: 0;
+}
+
+.title {
+  right: auto;
+  left: 20px;
+  background: transparent;
+  font-size: 45px;
+  padding: 0;
+}
+
+.gameOver {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+  text-align: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.8);
+  z-index: 4;
+  transform-origin: center;
+  opacity: 0;
+  transform: scale(0);
+  animation: gameOver 1s linear forwards 0.5s;
+
+  h2 {
+    color: black;
+    font-family: monospace;
+    margin-top: auto;
+    margin-bottom: 0;
+    font-size: 60px;
+  }
+
+  h4 {
+    margin-bottom: 40px;
+    margin-top: 40px;
+    font-family: monospace;
+    font-size: 30px;
+  }
+
+  button {
+    width: 200px;
+    margin: auto;
+    margin-top: 0;
+    cursor: pointer;
+    background-color: #ccc0b3;
+    text-transform: uppercase;
+    padding: 15px 20px;
+    border-radius: 6px;
+    font-family: monospace;
+    font-weight: bold;
+    color: white;
+    font-size: 20px;
+  }
+}
+
+@keyframes gameOver {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes vanish {
+  to {
+    opacity: 0;
+    transform: scale(0);
+  }
+}
+
+@keyframes pop {
+  0% {
+    transform: scale(0);
+  }
+  60% {
+    transform: scale(var(--scalePop));
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes slide {
+  from {
+    transform: translate(
+      calc(var(--lastXpos) * (var(--cellSize) + var(--gap))),
+      calc(var(--lastYpos) * (var(--cellSize) + var(--gap)))
+    );
+  }
+  to {
+    transform: translate(
+      calc(var(--xpos) * (var(--cellSize) + var(--gap))),
+      calc(var(--ypos) * (var(--cellSize) + var(--gap)))
+    );
+  }
+}
