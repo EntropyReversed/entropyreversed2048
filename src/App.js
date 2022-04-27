@@ -4,11 +4,11 @@ import Grid from './Grid';
 import createBgcVar from './helpers/createBgcVar';
 
 const gridCombinations = [
-  ['Tiny', 3, 0.76],
-  ['Classic', 4, 0.575],
-  ['Big', 5, 0.462],
-  ['Bigger', 6, 0.387],
-  ['Huge', 8, 0.293],
+  ['Tiny', 3, 0.58],
+  ['Classic', 4, 0.44],
+  ['Big', 5, 0.35],
+  ['Bigger', 6, 0.29],
+  // ['Huge', 8, 0.293],
 ];
 
 const gridPreview = (size, cellSize, gap, downgradeMultiplier = 0.3) => {
@@ -37,7 +37,7 @@ export default function App() {
   const [newGame, setNewGame] = useState(false);
   const cellSize = 70;
   const gap = 10;
-  const [currentGrid, setCurrentGrid] = useState(0);
+  const [currentGrid, setCurrentGrid] = useState(1);
 
   const pickGrid = (index) => {
     if (
