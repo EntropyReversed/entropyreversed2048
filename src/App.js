@@ -35,9 +35,8 @@ const maxWidth = (size, cellSize, gap, downgradeMultiplier = 0.3) => {
 
 export default function App() {
   const [newGame, setNewGame] = useState(false);
-  const [gridSize, setGridSize] = useState(4);
-  const [cellSize, setCellSize] = useState(70);
-  const [gap, setGap] = useState(10);
+  const cellSize = 70;
+  const gap = 10;
   const [currentGrid, setCurrentGrid] = useState(0);
 
   const pickGrid = (index) => {
@@ -103,8 +102,8 @@ export default function App() {
       {newGame && (
         <Grid
           size={gridCombinations[currentGrid][1]}
-          cellSize={70}
-          gap={10}
+          cellSize={cellSize * gridCombinations[currentGrid][2] * 2}
+          gap={gap * gridCombinations[currentGrid][2] * 2}
           setNewGame={setNewGame}
         />
       )}

@@ -183,7 +183,13 @@ const Grid = (props) => {
           <div className="gameOver">
             <h2>Game Over</h2>
             <h4>Final score: {score}</h4>
-            <button onClick={restartGameHandle}>restart</button>
+            <button
+              onClick={() => {
+                props.setNewGame(false);
+              }}
+            >
+              New Game
+            </button>
           </div>
         )}
 
@@ -191,7 +197,7 @@ const Grid = (props) => {
           onClick={() => {
             props.setNewGame(false);
           }}
-          style={{ position: 'absolute', bottom: 0 }}
+          style={{ position: 'absolute', top: 0, left: '50%', transform: 'translateX(-50%)' }}
         >
           back to menu
         </button>
