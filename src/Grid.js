@@ -187,9 +187,14 @@ const Grid = (props) => {
           </div>
         )}
 
-        {/* <button onClick={() => {
-          setGrid(prev => prev)
-        }} style={{position: 'absolute', bottom: 0}}>undo</button> */}
+        <button
+          onClick={() => {
+            props.setNewGame(false);
+          }}
+          style={{ position: 'absolute', bottom: 0 }}
+        >
+          back to menu
+        </button>
       </>
     )
   );

@@ -9,6 +9,81 @@ body {
   font-family: monospace;
 }
 
+.homescreen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  h1 {
+    font-size: 60px;
+  }
+
+  .buttons-wrap {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    button {
+      background: #ccc0b3;
+      font-size: 17px;
+      padding: 15px 20px;
+      border-radius: 6px;
+      text-transform: uppercase;
+      font-weight: bold;
+      outline: none;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease-in-out;
+
+      &.prev,
+      &.next {
+        font-size: 30px;
+        margin: 0 20px;
+
+        &.disabled {
+          opacity: 0.4;
+          cursor: default;
+
+          &:hover {
+            background: #ccc0b3;
+          }
+        }
+      }
+
+      &:hover {
+        background: #ebdfd4;
+      }
+    }
+  }
+
+  .selection-wrap {
+    display: flex;
+    width: calc(var(--width) * 1px);
+    height: calc(var(--width) * 1px);
+    margin-bottom: 40px;
+    overflow: hidden;
+
+    &__inner {
+      display: flex;
+      transition: transform 0.3s ease-in-out;
+      transform: translateX(calc(var(--current) * var(--width) * -1px));
+    }
+  }
+
+  .selection {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: calc(var(--width) * 1px);
+    height: calc(var(--width) * 1px);
+
+    span {
+      position: absolute;
+      font-size: 20px;
+    }
+  }
+}
+
 .grid-wrap {
   --border-r: 6px;
   --transition-dur: 0.3s;
