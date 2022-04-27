@@ -34,7 +34,7 @@ const maxWidth = (size, cellSize, gap, downgradeMultiplier = 0.3) => {
 };
 
 export default function App() {
-  const [newGame, setNewGame] = useState(false);
+  const [newGame, setNewGame] = useState(true);
   const cellSize = 70;
   const gap = 10;
   const [currentGrid, setCurrentGrid] = useState(1);
