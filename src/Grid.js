@@ -107,16 +107,6 @@ const Grid = (props) => {
     setGameOver(false);
   };
 
-  // if (window.Worker) {
-  //   const myWorker = new Worker('./helpers/worker.js');
-  //   myWorker.postMessage([10, 10]);
-  //   myWorker.onmessage = function (e) {
-  //     console.log('Message received from worker', e);
-  //   };
-  // } else {
-  //   console.log("Your browser doesn't support web workers.");
-  // }
-
   return (
     grid && (
       <>
