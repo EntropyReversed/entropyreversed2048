@@ -111,8 +111,17 @@ const Grid = (props) => {
     grid && (
       <>
         <div {...handlers} className="grid-wrap">
-          <h4 className="score">Score: {score}</h4>
           <h4 className="title">2048</h4>
+          <button
+            onClick={() => {
+              props.setNewGame(false);
+            }}
+            className="restart-btn"
+          >
+            Back to menu
+          </button>
+          <h4 className="score">Score: {score}</h4>
+
           <div
             className="grid"
             style={{
@@ -182,15 +191,6 @@ const Grid = (props) => {
             </button>
           </div>
         )}
-
-        <button
-          onClick={() => {
-            props.setNewGame(false);
-          }}
-          style={{ position: 'absolute', top: 0, left: '50%', transform: 'translateX(-50%)' }}
-        >
-          back to menu
-        </button>
       </>
     )
   );

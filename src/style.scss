@@ -7,6 +7,7 @@ body {
   margin: 0;
   overscroll-behavior: none;
   font-family: monospace;
+  background-color: #222222;
 }
 
 .homescreen {
@@ -17,14 +18,17 @@ body {
 
   h1 {
     font-size: 60px;
+    color: white;
   }
 
   .buttons-wrap {
     display: flex;
     flex-direction: row;
     align-items: center;
+
     button {
-      background: #ccc0b3;
+      background: #ccc0b3a8;
+      color: white;
       font-size: 17px;
       padding: 15px 20px;
       border-radius: 6px;
@@ -37,21 +41,19 @@ body {
 
       &.prev,
       &.next {
-        font-size: 30px;
+        font-size: 60px;
         margin: 0 20px;
+        padding: 8px 20px;
+        background-color: transparent;
 
         &.disabled {
           opacity: 0.4;
-          cursor: default;
+          cursor: not-allowed;
 
           &:hover {
-            background: #ccc0b3;
+            transform: scale(1.01);
           }
         }
-      }
-
-      &:hover {
-        background: #ebdfd4;
       }
     }
   }
@@ -182,16 +184,27 @@ body {
 }
 
 .score,
-.title {
+.title,
+.restart-btn {
   position: absolute;
   top: 20px;
-  right: 20px;
-  background: #ccc0b3;
   font-size: 17px;
   padding: 15px 20px;
   border-radius: var(--border-r);
   margin: 0;
   user-select: none;
+  color: white;
+}
+
+.score {
+  font-size: 30px;
+}
+
+.restart-btn {
+  right: 20px;
+  background: #ccc0b3a8;
+  cursor: pointer;
+  font-weight: bold;
 }
 
 .title {
