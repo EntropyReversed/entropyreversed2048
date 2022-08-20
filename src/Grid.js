@@ -100,12 +100,12 @@ const Grid = (props) => {
     };
   }, []);
 
-  const restartGameHandle = () => {
-    setGrid(() => createGrid(props.size));
-    setGridIsPopulated(true);
-    setScore(0);
-    setGameOver(false);
-  };
+  // const restartGameHandle = () => {
+  //   setGrid(() => createGrid(props.size));
+  //   setGridIsPopulated(true);
+  //   setScore(0);
+  //   setGameOver(false);
+  // };
 
   return (
     grid && (
